@@ -1,13 +1,14 @@
-"use-clinet";
+"use client";
 import React, { FC, useState } from "react";
 import Heading from "./utils/Heading";
-import { Header } from "./Components/Header";
+import Header from "./Components/Header";
+
 
 interface Props {}
 
 const Page: FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
-  const [activeItem, setActivItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(0);
 
   return (
     <div>
