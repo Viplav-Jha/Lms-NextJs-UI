@@ -1,3 +1,5 @@
+
+"use client"
 import './globals.css'
 import type { Metadata } from 'next'
 import {Poppins} from 'next/font/google';
@@ -23,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable}${josefin.variable} !bg-white dark:bg-gradient-to-black dark:from-gray-900 dark:to-black duration-300`}>
+      <body className={`${poppins.variable}${josefin.variable} !bg-white bg-no-repeat dark:bg-gradient-to-b dark:from-gray-900 dark:to-black duration-300`}>
         <ThemesProvider attribute='class' defaultTheme='system' enableSystem>
           {children}
         </ThemesProvider>
