@@ -6,7 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: ["class"],
+  darkMode: ['class'],
   theme: {
     extend: {
       fontFamily: {
@@ -30,5 +30,6 @@ const config: Config = {
     },
   },
   plugins: [],
+
 };
 export default config;
