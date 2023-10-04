@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useState, FC } from "react";
 import NavItems from "../utils/NavItems";
+import {ThemeSwitcher} from "../utils/ThemeSwitcher";
+import {HiOutlineMenuAlt3} from "react-icons/hi"
 
 type Props = {
   open: boolean;
@@ -51,6 +53,15 @@ type Props = {
             isMobile={false}
             
             />
+            <ThemeSwitcher/>
+            {/* only for mobile */}
+            <div className="800px:hidden">
+            <HiOutlineMenuAlt3
+            size={25}
+            className="cursor-pointer dark:text-white text-black"
+            onClick={()=>setOpenSidebar(true)}
+            />
+            </div>
            </div>
         </div>
       </div>
