@@ -5,17 +5,20 @@ import NavItems from "../utils/NavItems";
 import { ThemeSwitcher } from "../utils/ThemeSwitcher";
 import {
   HiOutlineMenuAlt3,
-  HiOutlineUser,
   HiOutlineUserCircle,
 } from "react-icons/hi";
+import CustomModal from "../utils/CustomModal";
+import Login from "../Components/Auth/Login"
 
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void; // A function that takes a boolean argument and does not return anything (void). It's used to control the state of the open property.
   activeItem: number;
+  route:string;
+  setRoute:(route:string) =>void;
 };
 
-const Header: FC<Props> = ({ activeItem, setOpen }: Props) => {
+const Header: FC<Props> = ({ activeItem, setOpen ,route,open,setRoute}: Props) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -100,7 +103,26 @@ const Header: FC<Props> = ({ activeItem, setOpen }: Props) => {
           </div>
         )}
       </div>
-    </div>
+      {
+      route === "Login" && (
+        <>
+        
+        {
+           open && (
+            <CustomModal
+                  open={open}
+                  setOpen={setOpen}
+                  setRoute={setRoute}
+                  activeItem={activeItem}
+                  component={Login}             />
+          )
+        }
+         
+        </>
+      )
+    }
+     </div>
+   
   );
 };
 
