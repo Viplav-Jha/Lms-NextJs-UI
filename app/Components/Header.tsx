@@ -3,22 +3,28 @@ import Link from "next/link";
 import { useState, FC } from "react";
 import NavItems from "../utils/NavItems";
 import { ThemeSwitcher } from "../utils/ThemeSwitcher";
-import {
-  HiOutlineMenuAlt3,
-  HiOutlineUserCircle,
-} from "react-icons/hi";
+import { HiOutlineMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
 import CustomModal from "../utils/CustomModal";
-import Login from "../Components/Auth/Login"
+import Login from "../Components/Auth/Login";
+import SignUp from "./Auth/SignUp";
+import Verification from "./Auth/Verification";
+
 
 type Props = {
   open: boolean;
   setOpen: (open: boolean) => void; // A function that takes a boolean argument and does not return anything (void). It's used to control the state of the open property.
   activeItem: number;
-  route:string;
-  setRoute:(route:string) =>void;
+  route: string;
+  setRoute: (route: string) => void;
 };
 
-const Header: FC<Props> = ({ activeItem, setOpen ,route,open,setRoute}: Props) => {
+const Header: FC<Props> = ({
+  activeItem,
+  setOpen,
+  route,
+  open,
+  setRoute,
+}: Props) => {
   const [active, setActive] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -58,9 +64,7 @@ const Header: FC<Props> = ({ activeItem, setOpen ,route,open,setRoute}: Props) =
               </Link>
             </div>
             <div className="flex items-center">
-              <NavItems activeItem={activeItem} 
-              isMobile={false} 
-              />
+              <NavItems activeItem={activeItem} isMobile={false} />
 
               <ThemeSwitcher />
               {/* only for mobile */}
@@ -87,42 +91,65 @@ const Header: FC<Props> = ({ activeItem, setOpen ,route,open,setRoute}: Props) =
             id="screen"
           >
             <div className="w-[70] fixed z-[99999999] h-screen bg-white dark:bg-slate-900 dark:bg-opacity-90 top-0 right-0">
-               <NavItems activeItem={activeItem} isMobile={true} />
-               <HiOutlineUserCircle
+              <NavItems activeItem={activeItem} isMobile={true} />
+              <HiOutlineUserCircle
                 size={25}
                 className="cursor-pointer ml-5 my-2 dark:text-white text-black"
                 onClick={() => setOpen(true)}
               />
-              <br/>
-              <br/>
+              <br />
+              <br />
               <p className="text-[16px] px-2 pl-5 text-black dark:text-white">
-              Copyright @ 2023 ELearning
+                Copyright @ 2023 ELearning
               </p>
-             
             </div>
           </div>
         )}
       </div>
-      {
-      route === "Login" && (
+      {route === "Login" && (
         <>
-        
-        {
-           open && (
+          {open && (
             <CustomModal
-                  open={open}
-                  setOpen={setOpen}
-                  setRoute={setRoute}
-                  activeItem={activeItem}
-                  component={Login}             />
-          )
-        }
-         
+              open={open}
+              setOpen={setOpen}
+              setRoute={setRoute}
+              activeItem={activeItem}
+              component={Login}
+            />
+          )}
         </>
-      )
-    }
-     </div>
-   
+      )}
+
+      {route === "Sign-Up" && (
+        <>
+          {open && (
+            <CustomModal
+              open={open}
+              setOpen={setOpen}
+              setRoute={setRoute}
+              activeItem={activeItem}
+              component={SignUp}
+            />
+          )}
+        </>
+      )}
+
+{route === "Verification" && (
+        <>
+          {open && (
+            <CustomModal
+              open={open}
+              setOpen={setOpen}
+              setRoute={setRoute}
+              activeItem={activeItem}
+              component={Verification}
+            />
+          )}
+        </>
+      )}
+     
+     
+    </div>
   );
 };
 
