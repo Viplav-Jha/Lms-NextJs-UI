@@ -22,7 +22,7 @@ const schema = Yup.object().shape({
   password: Yup.string().required("Please enter your Password!").min(6),
 });
 
-const Login: FC<Props> = (props: Props) => {
+const Login: FC<Props> = ({setRoute}) => {
   const [show, setShow] = useState(false);
 
   const formik = useFormik({
@@ -34,6 +34,7 @@ const Login: FC<Props> = (props: Props) => {
   });
 
   const { errors, touched, values, handleChange, handleSubmit } = formik;
+
 
   return (
     <div className="w-full">
@@ -86,7 +87,11 @@ const Login: FC<Props> = (props: Props) => {
               onClick={() => setShow(false)}
             />
           )}
+           
         </div>
+        {errors.password && touched.password && (
+          <span className="text-red-500 pt-2 block">{errors.password}</span>
+        )}
         <div className="w-full mt-5">
           <input type="submit" value="Login" className={`${styles.button}`} />
         </div>
@@ -98,7 +103,15 @@ const Login: FC<Props> = (props: Props) => {
           <FcGoogle size={30} clasName="cursor-pointer ml-2" />
           <AiFillGithub size={30} className="cursor-pointer ml-2" />
         </div>
+        <h5 className="text-center text-white pt-4 font-Poppins text-[14px]">
+          Not have any account?{" "}
+             <span
+                className="text-[#2190ff] pl-1 cursor-pointer" onClick={()=>setRoute("Sign-Up")} >
+                  Sign Up
+             </span>
+        </h5>
       </form>
+       <br/>
     </div>
   );
 };
