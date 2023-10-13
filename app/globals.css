@@ -47,3 +47,37 @@ body {
     opacity: 0.3;
   }
 }
+
+/* Chrome Safari , Edge,Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance:textfield;
+}
+
+
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px);
+  }
+  40% {
+    transform: translate(2px);
+  }
+  60% {
+    transform: translate(-2px);
+  }
+  80%{
+    transform: translate(2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
