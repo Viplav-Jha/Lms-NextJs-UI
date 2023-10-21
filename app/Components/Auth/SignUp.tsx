@@ -19,7 +19,7 @@ type Props = {
 
 const schema = Yup.object().shape({
     name:Yup.string().required("Please enter your name!"),
-  email: Yup.string()
+  email: Yup.string() 
     .email("Invaild email")
     .required("Please enter your email!"),
   password: Yup.string().required("Please enter your Password!").min(6),
